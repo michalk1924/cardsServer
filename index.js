@@ -47,6 +47,8 @@ app.get('/api/cards/:id', async (req, res) => {
 app.post('/api/cards', async (req, res) => {
     const newCard = {
         id: Cards.length,
+        text: 'New Card',
+        color: 'red',
         ...req.body
     }
     try {
@@ -59,6 +61,24 @@ app.post('/api/cards', async (req, res) => {
 });
 
 app.put('/api/cards/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
+    const updatedCard = req.body;
+    try {
+        const card = Cards.find(card => card.id === id);
+        if (!card) {
+            res.status(404).send({ message: "Card not found" })
+        }
+        else {
+            Object.assign(card, updatedCard);
+            res.send(card);
+        }
+    }
+    catch (error) {
+        res.status(500).send({ message: "Internal Server Error" })
+    }
+});
+
+app.patch('/api/cards/:id', async (req, res) => {
     const id = parseInt(req.params.id);
     const updatedCard = req.body;
     try {
