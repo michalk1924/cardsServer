@@ -22,4 +22,8 @@ const Cards = [
     }
 ]
 
-module.exports = Cards;
+let cardId = 4;
+
+const getNextId = () => cardId++;
+
+module.exports = {Cards, getNextId};

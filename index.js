@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const port = 8080;
 
-const Cards = require('./cards');
+const {Cards, getNextId} = require('./cards');
 
 app.use(express.json());
 
@@ -45,9 +45,10 @@ app.get('/api/cards/:id', async (req, res) => {
 });
 
 app.post('/api/cards', async (req, res) => {
+    const nextId = getNextId();
     const newCard = {
-        id: Cards.length,
-        text: 'New Card',
+        id: nextId,
+        text: `text ${nextId+1}`,
         color: 'red',
         ...req.body
     }
@@ -104,7 +105,7 @@ app.delete('/api/cards/:id', async (req, res) => {
             res.status(404).send({ message: "Card not found" })
         }
         else {
-            Cards.splice(id, 1);
+            Cards.splice(Cards.indexOf(card), 1);
             res.send(card);
         }
     }
@@ -114,5 +115,5 @@ app.delete('/api/cards/:id', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`cards app listening on port ${port}`)
 })
