@@ -48,8 +48,8 @@ app.post('/api/cards', async (req, res) => {
     const nextId = getNextId();
     const newCard = {
         id: nextId,
-        text: `text ${nextId+1}`,
-        color: 'red',
+        text: `new card`,
+        color: Cards[Cards.length-1]?.color ? Cards[Cards.length-1]?.color :'red',
         ...req.body
     }
     try {
