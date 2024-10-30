@@ -1,5 +1,5 @@
 # CardsServer  
-This is the **server-side** application for managing cards, designed for use as sticky notes rather than for gaming purposes. The server handles backend logic, manages data, and provides APIs for the **client-side** application.
+This is the **server-side** application for managing cards, designed for use as sticky notes rather than for gaming purposes. The server handles backend logic, manages data, and provides APIs for the **client-side** application (https://github.com/michalk1924/cardsClient).
 
 ### Features  
 - API for managing cards.  
@@ -9,7 +9,7 @@ This is the **server-side** application for managing cards, designed for use as 
 ### Technologies  
 - **Node.js**  
 - **Express.js**
-- 
+  
 ### Setup Instructions  
   Clone the repository:  
    ```bash
